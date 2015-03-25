@@ -2,7 +2,9 @@ package com.example.devid.devcamera;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.hardware.Camera;
+import android.widget.ImageView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -29,13 +32,16 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Button bx = (Button) v;
                 if(checkCameraHardware(getApplicationContext())){
-                    bx.setText("cliccatotrue"+Camera.getNumberOfCameras());
+                    bx.setText("cliccatotrue" + Camera.getNumberOfCameras());
                 }else{
                     bx.setText("cliccatofalse");
                 }
 
             }
         });
+        Intent intent = getIntent();
+        ImageView imgview = (ImageView) findViewById(R.id.imagepreview);
+        imgview.setImageURI(Uri.parse(intent.getExtras().getString("filePath","nooo")));
 
     }
 

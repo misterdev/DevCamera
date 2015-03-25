@@ -137,6 +137,8 @@ public class CameraActivity extends Activity {
         }
     }
     public void sendPic(String path){
-
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("filePath", path);
+        startActivity(intent);
     }
 }
