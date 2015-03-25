@@ -26,9 +26,9 @@ public class CameraActivity extends Activity {
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
     }
-
     @Override
-    public void onDestroy(Bundle savedInstanceState) {
+    public void onDestroy() {
         mCamera.release();
+        super.onDestroy();
     }
 }
